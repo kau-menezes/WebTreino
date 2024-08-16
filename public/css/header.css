@@ -1,0 +1,31 @@
+h6 {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    display: flex;
+    gap: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar {
+    padding: 0% 5%;
+    box-shadow: 10px 5px 10px rgb(179, 179, 179);
+    height: 100%;
+}
+
+.nav-link {
+    padding: 0 !important;
+}
+
+#highlight-title {
+    font-weight: 700;
+    background: linear-gradient(to right, #ff0000, #cc13ad, #511dcc, #198cce); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
