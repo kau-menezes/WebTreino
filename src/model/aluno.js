@@ -31,7 +31,3 @@ const aluno = database.define('Aluno',
         }
     }
 )
-
-// integrando tabelas
-
-aluno.belongsto(sala, )

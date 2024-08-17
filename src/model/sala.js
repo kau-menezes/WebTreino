@@ -22,4 +22,5 @@ const sala = database.define('Sala',
     }
 )
 
+// exports sala as a model object taht will be used in the controller "cadastro.js"
 module.exports = sala;
