@@ -13,7 +13,7 @@ app.use(express.static('public'));
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
-// here's how the router are handled 
+// here's how the routes are handled 
 app.use(routes);
 
 app.listen(3000, () => console.log('Server is running at: http://localhost:3000/'));

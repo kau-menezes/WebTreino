@@ -46,12 +46,15 @@
         <div class="container mt-auto">
             <div class="row justify-content-end">
                 <div class="col-sm-3 mt-5">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Selecione a Sala de Aula</option disabled>
-                        <option value="1">DTA</option>
-                        <option value="2">Mecatrônica</option>
-                        <option value="3">Mecânica</option>
-                      </select>
+                    <select id="studentClassInput" name="studentClassFilter" class="form-select" aria-label="Default select example">
+                        <option hidden value="">Sala</option>
+                        <% if (salas && salas.length > 0) { %>
+                            <% for(let i = 0; i < salas.length; i++) { %>
+                                <option value='<%= salas[i].IDSala %>'> <%= salas[i].Nome %> </option>
+                            <% } %>
+                        <% } else { %>
+                            <option disabled>No rooms available</option>
+                        <% } %>
                 </div>
             </div>
         </div>

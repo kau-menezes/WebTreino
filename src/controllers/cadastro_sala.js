@@ -4,7 +4,6 @@ const sala = require('../model/sala');
 module.exports = {
 
     // async function waits for the full responde of tthe other server or service 
-
     async sala(req, res) {
         res.render('../view/cadSala'); // renders the view page
     },

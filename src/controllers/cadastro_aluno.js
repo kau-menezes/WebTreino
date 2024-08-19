@@ -3,15 +3,15 @@ const sala = require('../model/sala');
 
 module.exports = {
     async alunoRender(req, res) {
-        // Encontrando todas as salas disponíveis no SQL
+
+        // returns a promise that resolved to an array. each element is a row of the model 
         const salas = await sala.findAll({
-            raw: true, // Retorna somente os valores de uma tabela, sem os metadados.
+            raw: true, 
             attributes: ['IDSala', 'Nome']
         });
 
-        console.log(salas)
-        // Renderizando e passando o nome das salas para o front
-        res.render('../view/cadAluno', {salas});
+        // render function can recieve a second parameter (object) as local variables to the page
+        res.render('../view/cadAluno', { salas });
     },
 
     async alunoInsert(req, res) {
