@@ -28,7 +28,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid d-flex justify-content-between align-items-center">
                 <div>
-                    <a class="d-flex gap-2" href="../Home/">
+                    <a class="d-flex gap-2" href="../view/index.ejs">
                         <h4 id="highlight-title">CONTROLE</h4> 
                         <h4> de Estudantes</h4>
                     </a>
@@ -41,7 +41,7 @@
                         <a class="nav-link" href="#">Alunos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../cadSala/">Sala</a>
+                        <a class="nav-link" href="/cadSala">Sala</a>
                     </li>
                 </ul>
             </div>
@@ -49,36 +49,40 @@
     </header>
     <main class="d-flex flex-column justify-content-center">
         <div class="row d-flex flex-column align-items-center mb-5">
-            <div class="container d-flex flex-column align-items-center">
-                <label id="avatar-label" for="avatar"><img id='avatar-img' src="../../images/user-logo.png" alt=""></label>
-                <input id="avatar-input" type="file" class="form-control-file" accept="image/png, image/jpeg" />
-            </div>
-            <form class="col-lg-4">
-                <div class="mb-3">
-                    <label for="student-name-input" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="student-name-input">
+            <form method="post" class="col-lg-4">
+                <div class="container d-flex flex-column align-items-center">
+                    <label id="avatar-label" for="avatar-input"><img id='avatar-img' src="../../public/img/aluno1.jpg" alt=""></label>
+                    <input id="avatar-input" name="studentAvatarInput"type="file" class="form-control-file" accept="image/png, image/jpeg" />
                 </div>
                 <div class="mb-3">
-                    <label for="student-age-input" class="form-label">Idade</label>
-                    <input type="number" class="form-control" id="student-age-input">
+                    <label for="studentNameInput" class="form-label">Nome</label>
+                    <input type="text" class="form-control" name="studentNameInput">
                 </div>
                 <div class="mb-3">
-                    <label for="student-gender-input" class="form-label">Gênero</label>
-                    <select id="student-gender-input" class="form-select" aria-label="Default select example">
+                    <label for="studentAgeInput" class="form-label">Idade</label>
+                    <input type="number" class="form-control" name="studentAgeInput">
+                </div>
+                <div class="mb-3">
+                    <label for="studentGenderInput" class="form-label">Gênero</label>
+                    <select name="studentGenderInput" class="form-select" aria-label="Default select example">
                         <option hidden>Gênero</option disabled>
-                        <option value="1">Feminino</option>
-                        <option value="2">Masculino</option>
-                        <option value="3">Outro</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Outro">Outro</option>
                       </select>
                 </div>
                 <div class="mb-3">
-                    <label for="student-class-input" class="form-label">Gênero</label>
-                    <select id="student-class-input" class="form-select" aria-label="Default select example">
-                        <option hidden>Sala</option disabled>
-                        <option value="1">DTA</option>
-                        <option value="2">Mecatrônica</option>
-                        <option value="3">Mecânica</option>
-                      </select>
+                    <label for="studentClassInput" class="form-label">Sala</label>
+                    <select id="studentClassInput" name="studentClassInput" class="form-select" aria-label="Default select example">
+                        <option hidden value="">Sala</option>
+                        <% if (salas && salas.length > 0) { %>
+                            <% for(let i = 0; i < salas.length; i++) { %>
+                                <option value='<%= salas[i].IDSala %>'> <%= salas[i].Nome %> </option>
+                            <% } %>
+                        <% } else { %>
+                            <option disabled>No rooms available</option>
+                        <% } %>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>
