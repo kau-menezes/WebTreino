@@ -11,6 +11,9 @@ const cadastro = require('./src/controllers/cadastro');
 route.get('/', home.pagInicialGet); // very first route 
 
 route.post('/cadSala', cadastro.SalaInsert)
+route.get('/cadSala', cadastro.sala)
+
+
 
 // exports route as an object that will be used by the express object 
 module.exports = route;

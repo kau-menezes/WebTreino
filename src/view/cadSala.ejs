@@ -22,7 +22,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid d-flex justify-content-between align-items-center">
                 <div >
-                    <a class="d-flex gap-2" href="index.ejs">
+                    <a class="d-flex gap-2" href="index">
                         <h4 id="highlight-title">CONTROLE</h4> 
                         <h4> de Estudantes</h4>
                     </a>
@@ -32,7 +32,7 @@
                         <h6>Cadastrar:</h6>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./cadAluno.ejs">Alunos</a>
+                        <a class="nav-link" href="/cadAluno">Alunos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Sala</a>
@@ -46,11 +46,11 @@
             <form action="cadSala" method="post" class="col-lg-4">
                 <div class="mb-3">
                     <label for="room-name-input" class="form-label">Nome da Sala</label>
-                    <input type="text" class="form-control" id="roomNameInput">
+                    <input type="text" class="form-control" name="roomNameInput">
                 </div>
                 <div class="mb-3">
                     <label for="room-capacity-input" class="form-label">Capacidade</label>
-                    <input type="text" class="form-control" id="roomCapacityInput">
+                    <input type="text" class="form-control" name="roomCapacityInput">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
