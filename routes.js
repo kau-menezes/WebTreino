@@ -7,15 +7,19 @@ const route = express.Router();
 const home = require('./src/controllers/home');
 const cadastro = require('./src/controllers/cadastro_sala');
 const cadastro_aluno = require('./src/controllers/cadastro_aluno');
+const editar_aluno = require('./src/controllers/editar_aluno');
 
 // routes managment!!! - deppending on the route, the API will direct to a specific controller
 route.get('/', home.pagInicialGet); // very first route 
+route.post('/', home.pagInicialPost); // very first route 
 
-route.post('/cadSala', cadastro.SalaInsert)
-route.get('/cadSala', cadastro.sala)
+route.post('/cadSala', cadastro.SalaInsert);
+route.get('/cadSala', cadastro.sala);
 
-route.get('/cadAluno', cadastro_aluno.alunoRender)
-route.post('/cadAluno', cadastro_aluno.alunoInsert)
+route.get('/cadAluno', cadastro_aluno.alunoRender);
+route.post('/cadAluno', cadastro_aluno.alunoInsert);
+
+route.get('/editar_aluno/:id', editar_aluno.editarAlunos);
 
 // exports route as an object that will be used by the express object 
 module.exports = route;

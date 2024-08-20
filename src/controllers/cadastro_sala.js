@@ -21,7 +21,7 @@ module.exports = {
         });
 
         // redirects the URL to the main page
-        res.redirect('../view/index');
+        res.redirect('/');
     }
 
 }
