@@ -15,7 +15,6 @@ module.exports = {
             raw: true,
             attributes: ['IDAluno', 'Nome', 'Idade', 'Foto']
         });
-        console.log(alunos)
         res.render('../view/index', { salas, alunos: '', id: '' });
 
     },

@@ -49,7 +49,7 @@
     </header>
     <main class="d-flex flex-column justify-content-center">
         <div class="row d-flex flex-column align-items-center mb-5">
-            <form method="post" class="col-lg-4">
+            <form method="post" class="col-lg-4" enctype="multipart/form-data">
                 <div class="container d-flex flex-column align-items-center">
                     <label id="avatar-label" for="avatar-input"><img id='avatar-img' src="img/user-logo.png" alt=""></label>
                     <input id="avatar-input" name="studentAvatarInput"type="file" class="form-control-file" accept="image/png, image/jpeg" />
@@ -71,7 +71,7 @@
                         <option value="Outro">Outro</option>
                       </select>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3" >
                     <label for="studentClassInput" class="form-label">Sala</label>
                     <select id="studentClassInput" name="studentClassInput" class="form-select" aria-label="Default select example">
                         <option hidden value="">Sala</option>
