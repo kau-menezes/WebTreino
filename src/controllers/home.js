@@ -4,7 +4,6 @@ const sala = require('../model/sala');
 module.exports = {
     
     async pagInicialGet(req, res){
-        const id = req.body.nome;
 
         const salas = await sala.findAll({
             raw: true,
@@ -15,7 +14,8 @@ module.exports = {
             raw: true,
             attributes: ['IDAluno', 'Nome', 'Idade', 'Foto']
         });
-        res.render('../view/index', { salas, alunos: '', id: '' });
+        
+        res.render('../view/index', { salas, alunos, id: '' });
 
     },
 

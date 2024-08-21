@@ -31,6 +31,7 @@ module.exports = {
                 Foto: foto,
                 IDSala: dados.studentClassInput
             })
+
     
             res.redirect('/?status=success');
         } catch (error) {

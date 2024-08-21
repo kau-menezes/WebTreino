@@ -60,7 +60,7 @@
                     </form>
                 </div>
                 <form action="" class="d-flex align-items-center">
-                    <a href="/editarSala/" class="btn btn-secondary btn-sm <%= alunos.length == 0 ? 'disabled' : '' %>" role="button" aria-disabled="true"> Editar Sala </a> 
+                    <a href="/editarSala/<%= id %>" class="btn btn-secondary btn-sm <%= !id? 'disabled' : '' %>" role="button" aria-disabled="true"> Editar Sala </a> 
                 </form>
             </div>
         </div>
