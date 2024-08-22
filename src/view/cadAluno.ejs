@@ -77,7 +77,9 @@
                         <option hidden value="">Sala</option>
                         <% if (salas && salas.length > 0) { %>
                             <% for(let i = 0; i < salas.length; i++) { %>
-                                <option value='<%= salas[i].IDSala %>'> <%= salas[i].Nome %> </option>
+                                <% if (salas[i].Capacidade > salas[i].qtdAlunos) { %>
+                                    <option value='<%= salas[i].IDSala %>'> <%= salas[i].Nome %> </option>
+                                <% } %>
                             <% } %>
                         <% } else { %>
                             <option disabled>No rooms available</option>

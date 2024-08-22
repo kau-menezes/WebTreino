@@ -4,22 +4,25 @@ const sala = require('../model/sala');
 module.exports = {
     async alunoRender(req, res) {
 
-        const id = req.body.nome;
+        // const id = req.body.nome;
     
         const alunos = await aluno.findAll({
             raw: true,
-            attributes: ['IDAluno', 'Nome', 'Idade', 'Foto'],
-            where: { IDSala: id }
+            attributes: ['IDAluno', 'Nome', 'Idade', 'Foto']
         });
     
-        res.render('../view/index.ejs', { salas, alunos, id }); 
         const salas = await sala.findAll({
             raw: true, // Retorna somente os valores de uma tabela, sem os metadados.
             attributes: ['IDSala', 'Nome', 'Capacidade']
         });
 
-        // Renderizando e passando o nome das salas para o front
-        res.render('../view/cadAluno', {salas, alunos});
+        const salasContador = await Promise.all(salas.map( async (sala) => {
+            const qtdAlunos = await aluno.count ( { where: { IDSala : sala.IDSala }})
+
+            return { ...sala, qtdAlunos}
+        }));
+        
+        res.render('../view/cadAluno', { salas: salasContador, alunos });
     },
 
     async alunoInsert(req, res) {

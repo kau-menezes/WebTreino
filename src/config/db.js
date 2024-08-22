@@ -2,11 +2,12 @@
 
 const sequelize = require('sequelize');
 
-const database = new sequelize('controle_alunos', 'aulaNode', 'aulaNode@plm098', 
+const database = new sequelize('controle_alunos_1', 'aulaNode_1', 'aulaNode_1', 
     {
         dialect: 'mssql', 
         host: 'localhost', 
-        port: 1433
+        // port: 1433
+        port: 49928
     }
 );
 
