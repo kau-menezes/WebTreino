@@ -50,20 +50,21 @@
                         <select id="sala" onchange="this.form.submit()" name="nome" class="form-select" aria-label="Default select example">
                             <option hidden value="">Sala</option>
                             <% if (salas && salas.length > 0) { %>
-                                <% for(let i = 0; i < salas.length; i++) { %>
-                                    <option value='<%= salas[i].IDSala %>' <%= id == salas[i].IDSala ? 'selected' : ''%>> <%= salas[i].Nome %> </option>
+                                <% for (let i = 0; i < salas.length; i++) { %>
+                                    <option value="<%= salas[i].IDSala %>" <%= id == salas[i].IDSala ? 'selected' : '' %>> <%= salas[i].Nome %> </option>
                                 <% } %>
                             <% } else { %>
                                 <option disabled>Sem salas disponíveis</option>
                             <% } %>
-                          </select>
+                        </select>
                     </form>
                 </div>
-                <form action="" class="d-flex align-items-center">
-                    <a href="/editarSala/<%= id %>" class="btn btn-secondary btn-sm <%= !id? 'disabled' : '' %>" role="button" aria-disabled="true"> Editar Sala </a> 
+                <form action="" class="d-flex align-items-center flex-row justify-content-center">
+                    <a href="/editarSala/<%= id %>" class="btn btn-secondary btn-sm m-1 <%= !id ? 'disabled' : '' %>" role="button" aria-disabled="<%= !id ? 'true' : 'false' %>"> Editar Sala </a> 
+                    <a href="/excluirSala/<%= id %>" class="btn btn-danger btn-sm m-1 <%= !id ? 'd-none' : '' %>" role="button" aria-disabled="<%= !id ? 'true' : 'false' %>"> Excluir Sala </a> 
                 </form>
             </div>
-        </div>
+        </div>      
         <div id="cards" class="container">
             <div class="row d-flex flew-wrap gap-3 align-items-center">
                 <% if (alunos && alunos.length > 0) { %>
@@ -74,7 +75,10 @@
                             <div class="card-body d-flex flex-column align-items-center">
                               <h5 class="card-title"> <%= alunos[i].Nome %></h5>
                               <p class="card-text">Idade: <%= alunos[i].Idade %> </p>
-                              <a href="/editarAluno/<%= alunos[i].IDAluno %>" class="btn btn-secondary">Editar</a>
+                              <div id="btns d-flex flex-row">
+                                  <a href="/editarAluno/<%= alunos[i].IDAluno %>" class="btn btn-primary">Editar</a>
+                                  <a href="/excluirAluno/<%= alunos[i].IDAluno %>" class="btn btn-outline-danger">Excluir</a>
+                              </div>
                             </div>
                         </div>
                     <% } %>

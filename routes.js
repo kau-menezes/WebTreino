@@ -11,6 +11,7 @@ const cadastro = require('./src/controllers/cadastro_sala');
 const cadastro_aluno = require('./src/controllers/cadastro_aluno');
 const editar_aluno = require('./src/controllers/editar_aluno');
 const editar_sala = require('./src/controllers/editar_sala');
+const excluir_entidade = require('./src/controllers/excluir_entidade');
 
 // routes managment!!! - deppending on the route, the API will direct to a specific controller
 route.get('/', home.pagInicialGet); // very first route 
@@ -27,6 +28,9 @@ route.post('/editarAluno/:id', multer(config).single('studentAvatarInput'), edit
 
 route.get('/editarSala/:id', editar_sala.editarSalas);
 route.post('/editarSala/:id', editar_sala.atualizarSalas);
+
+route.get('/excluirSala/:id', excluir_entidade.excluirSala);
+route.get('/excluirAluno/:id', excluir_entidade.excluirAluno);
 
 
 // exports route as an object that will be used by the express object 
