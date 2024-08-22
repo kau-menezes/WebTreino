@@ -7,7 +7,26 @@ module.exports = {
 
     async excluirSala(req, res) {
 
-        // 
+        const id = req.params.id;
+
+        const qtdAlunos = await aluno.count({
+            where: {IDSala : id}
+        });
+
+    console.log(qtdAlunos);
+
+
+        if (qtdAlunos > 0) {
+            res.redirect('/');
+            console.log("Cannot delete the class because there are students assigned to it.");
+
+        } else {
+
+            await sala.destroy({
+                where: { IDSala: id }
+            });
+        }
+
     },
 
     async excluirAluno(req, res) {
