@@ -31,7 +31,7 @@ module.exports = {
     
         const salas = await sala.findAll({ 
             raw: true, 
-            attributes: ['IDSala', 'Nome']
+            attributes: ['IDSala', 'Nome', 'Capacidade']
         });
 
         res.render('../view/index.ejs', { salas, alunos, id }); 

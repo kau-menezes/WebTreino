@@ -60,6 +60,9 @@
                     </form>
                 </div>
                 <form action="" class="d-flex align-items-center flex-row justify-content-center">
+                    <% if (id) { %>
+                        <p class="<%= !id ? 'd-none' : '' %> m-0 semi-bold"> <%= salas[id - 1].Capacidade %> / <%= alunos.length %></p>
+                    <% } %>
                     <a href="/editarSala/<%= id %>" class="btn btn-secondary btn-sm m-1 <%= !id ? 'disabled' : '' %>" role="button" aria-disabled="<%= !id ? 'true' : 'false' %>"> Editar Sala </a> 
                     <a href="/excluirSala/<%= id %>" class="btn btn-danger btn-sm m-1 <%= !id ? 'd-none' : '' %>" role="button" aria-disabled="<%= !id ? 'true' : 'false' %>"> Excluir Sala </a> 
                 </form>
