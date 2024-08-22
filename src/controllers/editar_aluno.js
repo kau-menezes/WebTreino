@@ -20,14 +20,16 @@ module.exports = {
             raw: true,
             attributes: ['IDSala', 'Nome']
         });
-
+        
         res.render('../view/editarAluno', { salas, alunos });
     },
 
     async atualizarAluno(req, res) {
-        const dados = req.body;
-        const id = req.params.id;
 
+        const dados = req.body;
+
+        // gets the route's id paramether
+        const id = req.params.id;
 
         // Dando upgrade nas novas informações
         await aluno.update({

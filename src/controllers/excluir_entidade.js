@@ -15,7 +15,7 @@ module.exports = {
 
     console.log(qtdAlunos);
 
-
+        // verifies if there are any students associated with the class before deleting it 
         if (qtdAlunos > 0) {
             res.redirect('/');
             console.log("Cannot delete the class because there are students assigned to it.");

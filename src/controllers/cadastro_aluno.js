@@ -16,12 +16,15 @@ module.exports = {
             attributes: ['IDSala', 'Nome', 'Capacidade']
         });
 
+        // function that returns an array that was mapped and implemented for each element the qtdAlunos attribute
         const salasContador = await Promise.all(salas.map( async (sala) => {
             const qtdAlunos = await aluno.count ( { where: { IDSala : sala.IDSala }})
 
+            // spread opperator 
             return { ...sala, qtdAlunos}
         }));
         
+        // passes the student counting function as a variable named salas
         res.render('../view/cadAluno', { salas: salasContador, alunos });
     },
 
@@ -31,26 +34,19 @@ module.exports = {
         let foto = 'user-logo.png'
 
         if (req.file) {
-            console.log("caiu no if");
             foto = req.file.filename;
         }
 
-        try {
+        await aluno.create ({
+            Nome: dados.studentNameInput, 
+            Idade:dados.studentAgeInput, 
+            Sexo: dados.studentGenderInput, 
+            Foto: foto,
+            IDSala: dados.studentClassInput
+        })
 
-            await aluno.create ({
-                Nome: dados.studentNameInput, 
-                Idade:dados.studentAgeInput, 
-                Sexo: dados.studentGenderInput, 
-                Foto: foto,
-                IDSala: dados.studentClassInput
-            })
+        res.redirect('/');
 
-    
-            res.redirect('/?status=success');
-        } catch (error) {
-            console.error('Error inserting aluno:', error);
-            res.redirect('/?status=error');
-        };
     }
 
 }

@@ -44,28 +44,34 @@
     </header>
     <main class="d-flex flex-column main-container">
         <div class="container mt-5">
-            <div class="d-flex flex-row justify-content-end">
-                <div class="col-sm-3 d-flex align-items-center">
-                    <form method="post" action="/">
-                        <select id="sala" onchange="this.form.submit()" name="nome" class="form-select" aria-label="Default select example">
-                            <option hidden value="">Sala</option>
-                            <% if (salas && salas.length > 0) { %>
-                                <% for (let i = 0; i < salas.length; i++) { %>
-                                    <option value="<%= salas[i].IDSala %>" <%= id == salas[i].IDSala ? 'selected' : '' %>> <%= salas[i].Nome %> </option>
+            <div id="filter-action" class="d-flex flex-row justify-content-between">
+                <% if (id) { %>
+                <div id="class-title" class="d-flex flex-column align-self-start">
+                    <h2 class="m-0"><%= salas[id - 1].Nome %></h2>
+                        <!-- or  <p class=" <%= // !id ? 'd-none' : '' %> m-1 semi-bold"> <%= // salas[id - 1].Capacidade %> / <%= // salas[id - 1].qtdAlunos %></p>-->
+                        <p class="<%= !id ? 'd-none' : '' %> semi-bold p-0"> <%= salas[id - 1].Capacidade %> / <%= alunos.length %></p>
+                    </div>
+                <% } %>
+                <div class="d-flex flex-row w-75 justify-content-end align-items-start">
+                    <div class="col-sm-3 d-flex align-items-center justify-content-center">
+                        <form method="post" action="/">
+                            <select id="sala" onchange="this.form.submit()" name="nome" class="form-select" aria-label="Default select example">
+                                <option hidden value="">Sala</option>
+                                <% if (salas && salas.length > 0) { %>
+                                    <% for (let i = 0; i < salas.length; i++) { %>
+                                        <option value="<%= salas[i].IDSala %>" <%= id == salas[i].IDSala ? 'selected' : '' %>> <%= salas[i].Nome %> </option>
+                                    <% } %>
+                                <% } else { %>
+                                    <option disabled>Sem salas disponíveis</option>
                                 <% } %>
-                            <% } else { %>
-                                <option disabled>Sem salas disponíveis</option>
-                            <% } %>
-                        </select>
+                            </select>
+                        </form>
+                    </div>
+                    <form action="" class="d-flex align-items-center flex-row justify-content-center ">
+                        <a href="/editarSala/<%= id %>" class="btn btn-secondary btn-sm m-1 <%= !id ? 'disabled' : '' %>" role="button" aria-disabled="<%= !id ? 'true' : 'false' %>"> Editar Sala </a> 
+                        <a href="/excluirSala/<%= id %>" class="btn btn-danger btn-sm m-1 <%= !id ? 'd-none' : '' %>" role="button" aria-disabled="<%= !id ? 'true' : 'false' %>"> Excluir Sala </a> 
                     </form>
                 </div>
-                <form action="" class="d-flex align-items-center flex-row justify-content-center">
-                    <% if (id) { %>
-                        <p class="<%= !id ? 'd-none' : '' %> m-1 semi-bold"> <%= salas[id - 1].Capacidade %> / <%= alunos.length %></p>
-                    <% } %>
-                    <a href="/editarSala/<%= id %>" class="btn btn-secondary btn-sm m-1 <%= !id ? 'disabled' : '' %>" role="button" aria-disabled="<%= !id ? 'true' : 'false' %>"> Editar Sala </a> 
-                    <a href="/excluirSala/<%= id %>" class="btn btn-danger btn-sm m-1 <%= !id ? 'd-none' : '' %>" role="button" aria-disabled="<%= !id ? 'true' : 'false' %>"> Excluir Sala </a> 
-                </form>
             </div>
         </div>      
         <div id="cards" class="container">
