@@ -17,7 +17,7 @@ module.exports = {
         });
 
         // function that returns an array that was mapped and implemented for each element the qtdAlunos attribute
-        const salasContador = await Promise.all(salas.map( async (sala) => {
+        const salasContador = await Promise.all( salas.map( async (sala) => {
             const qtdAlunos = await aluno.count ( { where: { IDSala : sala.IDSala }})
 
             // spread opperator 

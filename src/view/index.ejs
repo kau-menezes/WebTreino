@@ -48,8 +48,9 @@
                 <% if (id) { %>
                 <div id="class-title" class="d-flex flex-column align-self-start">
                     <h2 class="m-0"><%= salas[id - 1].Nome %></h2>
+                    <% for (let i = 0; i < salas.length; i++) { if (salas[i].IDSala == id) { var capacidadeSala = salas[i].Capacidade}} %>
                         <!-- or  <p class=" <%= // !id ? 'd-none' : '' %> m-1 semi-bold"> <%= // salas[id - 1].Capacidade %> / <%= // salas[id - 1].qtdAlunos %></p>-->
-                        <p class="<%= !id ? 'd-none' : '' %> semi-bold p-0"> <%= salas[id - 1].Capacidade %> / <%= alunos.length %></p>
+                        <p class="<%= !id ? 'd-none' : '' %> semi-bold p-0"> <%= alunos.length %> / <%= capacidadeSala %></p>
                     </div>
                 <% } %>
                 <div class="d-flex flex-row w-75 justify-content-end align-items-start">

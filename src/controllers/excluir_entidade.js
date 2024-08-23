@@ -13,7 +13,6 @@ module.exports = {
             where: {IDSala : id}
         });
 
-    console.log(qtdAlunos);
 
         // verifies if there are any students associated with the class before deleting it 
         if (qtdAlunos > 0) {

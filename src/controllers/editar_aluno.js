@@ -51,7 +51,7 @@ module.exports = {
             });
 
             // Excluindo a foto da pasta
-            if (antigaFoto[0].Foto != 'usuario.png') fs.unlink(`public/img/${antigaFoto[0].Foto}`, (err => { if (err) console.log(err); }));
+            if (antigaFoto[0].Foto != 'user-logo.png') fs.unlink(`public/img/${antigaFoto[0].Foto}`, (err => { if (err) console.log(err); }));
             // Update da nova foto no DB
             await aluno.update(
                 { Foto: req.file.filename },
